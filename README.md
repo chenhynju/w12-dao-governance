@@ -24,3 +24,8 @@ Parameters expressed in blocks depend on the chain's block cadence. Initial toke
 - [AI-assisted security self-assessment](docs/audit/self-assessment.md)
 
 The contract prototype accepts a guardian address, including a multisig. The test fixture uses an EOA. A wallet dashboard, deployed multisig integration and public deployment remain pending.
+
+## Release records
+
+- [Local verification](docs/testing/verification.md)
+- [Base Sepolia deployment status](docs/deployment/base-sepolia.md)
