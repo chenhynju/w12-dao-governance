@@ -22,3 +22,11 @@ The review identified distribution and guardian liveness as residual risks. Rele
 - PASS: Runtime and initcode fit within the compiler-reported size limits. Treasury and TreasuryV2 use identical slot positions for the original state.
 - PASS: Forge lint exits successfully with advisory notes. The treasury ETH call checks the result and reverts on failure.
 - NOT RUN: Public-chain execution, hosted dashboard, external static analyzers, stateful invariant campaign and independent audit.
+
+## Base Sepolia release follow-up
+
+The contract source is unchanged from the reviewed commit. The release campaign adds a stateful treasury model that compares deposits, payments, recipient ETH and pause status across randomized command sequences. The harness isolates the treasury from Governor, using a controlled caller for both roles. Governor lifecycle and role boundaries are exercised in the integration suite.
+
+Foundry CI campaign passed eight tests with seed 0x1234, including 10,000 payment fuzz cases and 512 invariant runs at depth 256. The invariant campaign executed 131,072 handler calls with zero unexpected reverts. See ../../evidence/release-test.txt.
+
+Base Sepolia preflight: Windows read-only RPC returned chain ID 84532 and zero balance for candidate signer 0x568Fa7993b0C425B34e39078d46b7e32891b99C2. WSL chain-ID probes to the official endpoint, PublicNode and dRPC timed out. Opening the Optimism faucet timed out. Funding and broadcast are blocked. Source verification and public smoke tests have no executed results.
