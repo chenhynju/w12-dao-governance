@@ -1,0 +1,2 @@
+@openzeppelin/contracts/=vendor/openzeppelin-contracts/contracts/
+forge-std/=vendor/forge-std/src/
