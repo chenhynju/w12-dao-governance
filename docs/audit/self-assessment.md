@@ -1,5 +1,6 @@
 # AI-Assisted Self-Assessment
 
+Reviewed source commit: 08a3d7bdafca03c061d22160ffd0406d873101ef. See ../../evidence/ for test output, deployment simulation, storage layouts and Forge lint notes.
 Scope includes src/Dao.sol, src/Treasury.sol and script/Deploy.s.sol. OpenZeppelin is a trusted dependency. Review covers the local prototype and synthetic ETH balances.
 
 | Area | Review and evidence |
@@ -13,3 +14,11 @@ Scope includes src/Dao.sol, src/Treasury.sol and script/Deploy.s.sol. OpenZeppel
 | Timing | Votes use block checkpoints. Queue delays use timestamps. Verify parameter durations on the target chain before deployment. |
 
 The review identified distribution and guardian liveness as residual risks. Release acceptance remains open pending dashboard and multisig integration, target-chain verification, independent review and broader testing. Slither, Aderyn, stateful invariant testing and optimizer comparisons have no executed results in this checkpoint.
+
+## Verification results
+
+- PASS: Foundry CI-profile test suite, seven tests including 10,000 treasury payment cases at seed 0x1234.
+- PASS: Forge deployment script simulation with synthetic role addresses. Returned addresses refer to the simulator.
+- PASS: Runtime and initcode fit within the compiler-reported size limits. Treasury and TreasuryV2 use identical slot positions for the original state.
+- PASS: Forge lint exits successfully with advisory notes. The treasury ETH call checks the result and reverts on failure.
+- NOT RUN: Public-chain execution, hosted dashboard, external static analyzers, stateful invariant campaign and independent audit.

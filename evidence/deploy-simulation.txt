@@ -1,0 +1,13 @@
+Compiling 2 files with Solc 0.8.28
+Solc 0.8.28 finished in 24.34s
+Compiler run successful!
+Script ran successfully.
+Gas used: 8092841
+
+== Return ==
+votes: contract DaoVotes 0x7c661d3291474375653344732FC67eA90908A9C0
+governor: contract DaoGovernor 0x320BBEDF9C19c83eA38F86DC510f5c00414B3ff2
+lock: contract TimelockController 0x3817e247023B4f489352758397040b1fd33b300a
+treasury: contract Treasury 0xE93C385761D590bDFE35C8dc9910916C17F62649
+
+If you wish to simulate on-chain transactions pass a RPC URL.

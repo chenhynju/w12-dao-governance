@@ -1,0 +1,12 @@
+Compiling 22 files with Solc 0.8.28
+Solc 0.8.28 finished in 71.48s
+Compiler run successful!
+
+Ran 4 tests for test/Dao.t.sol:DaoTest
+[PASS] testBootstrapAdminRemovedAndDirectPaymentDenied() (gas: 92526)
+[PASS] testFuzz_TreasuryProposalConservesEth(uint256) (runs: 10000, μ: 604073, ~: 604127)
+[PASS] testGuardianPauseAndGovernanceRecovery() (gas: 654736)
+[PASS] testUpgradePreservesStorageAndBalance() (gas: 1411606)
+Suite result: ok. 4 passed; 0 failed; 0 skipped; finished in 9.73s (9.73s CPU time)
+
+Ran 1 test suite in 9.76s (9.73s CPU time): 4 tests passed, 0 failed, 0 skipped (4 total tests)

@@ -1,0 +1,62 @@
+note[multi-contract-file]: prefer having only one contract, interface or library per file
+   ╭▸ src/Dao.sol:19:10
+   │
+19 │ contract DaoVotes is ERC20, ERC20Permit, ERC20Votes {
+   │          ━━━━━━━━
+   │
+   ╰ help: https://getfoundry.sh/forge/linting/multi-contract-file
+
+note[low-level-calls]: Low-level calls should be avoided
+   ╭▸ src/Treasury.sol:60:22
+   │
+60 │         (bool ok,) = recipient.call{value: amount}("");
+   │                      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   │
+   ╰ help: https://getfoundry.sh/forge/linting/low-level-calls
+
+note[multi-contract-file]: prefer having only one contract, interface or library per file
+   ╭▸ src/Dao.sol:34:10
+   │
+34 │ contract DaoGovernor is GovernorCountingSimple, GovernorVotesQuorumFraction, GovernorTimelockControl {
+   │          ━━━━━━━━━━━
+   │
+   ╰ help: https://getfoundry.sh/forge/linting/multi-contract-file
+
+note[unwrapped-modifier-logic]: wrap modifier logic to reduce code size
+   ╭▸ src/Treasury.sol:26:5
+   │
+26 │ ┏     modifier onlyTimelock() {
+27 │ ┃         if (msg.sender != timelock) revert Unauthorized();
+28 │ ┃         _;
+29 │ ┃     }
+   │ ┗━━━━━┛
+   │
+   ╰ help: https://getfoundry.sh/forge/linting/unwrapped-modifier-logic
+help: wrap modifier logic to reduce code size
+   ╭╴
+26 ±     modifier onlyTimelock() {
+27 +         _onlyTimelock();
+28 +         _;
+29 +     }
+30 + 
+31 +     function _onlyTimelock() internal {
+32 +         if (msg.sender != timelock) revert Unauthorized();
+33 +     }
+   ╰╴
+
+warning[reentrancy-events]: event emitted after an external call; reentrancy can reorder or fabricate logs that off-chain consumers rely on
+   ╭▸ src/Treasury.sol:35:9
+   │
+35 │         emit GuardianChanged(guardian_);
+   │         ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   │
+   ╰ help: https://getfoundry.sh/forge/linting/reentrancy-events
+
+warning[reentrancy-events]: event emitted after an external call; reentrancy can reorder or fabricate logs that off-chain consumers rely on
+   ╭▸ src/Treasury.sol:62:9
+   │
+62 │         emit Payment(recipient, amount);
+   │         ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   │
+   ╰ help: https://getfoundry.sh/forge/linting/reentrancy-events
+
